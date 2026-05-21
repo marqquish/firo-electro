@@ -62,6 +62,8 @@
     #mobile-menu.open{display:block;}
     @media(max-width:768px){.hero-bg::after{display:none;}}
   </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init("AnFmK76_Ni7gJmwf4");</script>
 </head>
 <body>
 
@@ -291,16 +293,16 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
             <div>
               <label style="display:block;font-family:Hanken Grotesk,sans-serif;font-weight:600;font-size:12px;color:#43474f;margin-bottom:6px;">Nombre</label>
-              <input type="text" placeholder="Tu nombre" style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;" required/>
+              <input type="text" name="nombre" placeholder="Tu nombre" style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;" required/>
             </div>
             <div>
               <label style="display:block;font-family:Hanken Grotesk,sans-serif;font-weight:600;font-size:12px;color:#43474f;margin-bottom:6px;">Teléfono</label>
-              <input type="tel" placeholder="Tu número" style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;" required/>
+              <input type="tel" name="telefono" placeholder="Tu número" style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;" required/>
             </div>
           </div>
           <div>
             <label style="display:block;font-family:Hanken Grotesk,sans-serif;font-weight:600;font-size:12px;color:#43474f;margin-bottom:6px;">Tipo de servicio</label>
-            <select style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;background:#fff;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23747780%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 12px center;">
+            <select name="servicio" style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;background:#fff;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23747780%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>');background-repeat:no-repeat;background-position:right 12px center;">
               <option>Electricidad</option>
               <option>Fontanería</option>
               <option>Aire Acondicionado</option>
@@ -311,7 +313,7 @@
           </div>
           <div>
             <label style="display:block;font-family:Hanken Grotesk,sans-serif;font-weight:600;font-size:12px;color:#43474f;margin-bottom:6px;">Descripción breve</label>
-            <textarea placeholder="Cuéntanos qué necesitas..." rows="4" style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;resize:none;"></textarea>
+            <textarea name="mensaje" placeholder="Cuéntanos qué necesitas..." rows="4" style="width:100%;border:1px solid #c4c6d0;border-radius:4px;padding:11px 14px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#141b2b;resize:none;"></textarea>
           </div>
           <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border-radius:6px;">
             Quiero mi presupuesto gratis
@@ -320,6 +322,9 @@
         </form>
         <div id="form-success" style="display:none;margin-top:16px;padding:14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#166534;text-align:center;">
           ✓ ¡Solicitud enviada! Te contactaremos en menos de 2 horas.
+        </div>
+        <div id="form-error" style="display:none;margin-top:16px;padding:14px;background:#fff1f2;border:1px solid #fecdd3;border-radius:6px;font-family:Hanken Grotesk,sans-serif;font-size:14px;color:#9f1239;text-align:center;">
+          ✗ Error al enviar. Llámanos directamente al 620 602 380.
         </div>
       </div>
     </div>
