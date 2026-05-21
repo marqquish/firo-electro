@@ -63,7 +63,6 @@
     @media(max-width:768px){.hero-bg::after{display:none;}}
   </style>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init("AnFmK76_Ni7gJmwf4");</script>
 </head>
 <body>
 
@@ -359,12 +358,35 @@
 </style>
 
 <script>
+  emailjs.init("AnFmK76_Ni7gJmwf4");
+
 function handleSubmit(e){
   e.preventDefault();
-  var s=document.getElementById('form-success');
-  s.style.display='block';
-  e.target.reset();
-  setTimeout(function(){s.style.display='none';},5000);
+  var form = e.target;
+  var btn = form.querySelector('button[type="submit"]');
+  var success = document.getElementById('form-success');
+  var error = document.getElementById('form-error');
+
+  // Reset estado
+  success.style.display = 'none';
+  error.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  emailjs.sendForm('service_0upwd39', 'template_vtp84fc', form)
+    .then(function() {
+      success.style.display = 'block';
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = 'Quiero mi presupuesto gratis →';
+      setTimeout(function(){ success.style.display = 'none'; }, 6000);
+    }, function(err) {
+      error.style.display = 'block';
+      error.textContent = '✗ Error al enviar (' + JSON.stringify(err) + '). Llámanos al 620 602 380.';
+      btn.disabled = false;
+      btn.textContent = 'Quiero mi presupuesto gratis →';
+      console.error('EmailJS error:', err);
+    });
 }
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   a.addEventListener('click',function(e){
